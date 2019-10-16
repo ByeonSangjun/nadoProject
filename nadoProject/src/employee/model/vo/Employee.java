@@ -24,6 +24,8 @@ public class Employee implements java.io.Serializable{
 	private java.sql.Date hireDate;
 	private String idLevel;
 	private String sign;
+	private String deptName;
+	private String jobName;
 	
 	public Employee() {}
 	
@@ -46,7 +48,7 @@ public class Employee implements java.io.Serializable{
 	
 	public Employee(String empId, String email, String myProfile, String userId, String empName, String userPwd,
 			String empNo, String phone, String address, String deptId, String jobId, String paystep, String empPhone,
-			int salary, double bonus, String marriage, Date hireDate, String idLevel, String sign) {
+			int salary, double bonus, String marriage, Date hireDate, String idLevel, String sign, String deptName, String jobName) {
 		super();
 		this.empId = empId;
 		this.email = email;
@@ -67,6 +69,9 @@ public class Employee implements java.io.Serializable{
 		this.hireDate = hireDate;
 		this.idLevel = idLevel;
 		this.sign = sign;
+		this.deptName = deptName;
+		this.jobName = jobName;
+		
 	}
 
 	public String getEmpId() {
@@ -225,13 +230,30 @@ public class Employee implements java.io.Serializable{
 		return serialVersionUID;
 	}
 
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	public String getJobName() {
+		return jobName;
+	}
+
+	public void setJobName(String jobName) {
+		this.jobName = jobName;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", email=" + email + ", myProfile=" + myProfile + ", userId=" + userId
 				+ ", empName=" + empName + ", userPwd=" + userPwd + ", empNo=" + empNo + ", phone=" + phone
 				+ ", address=" + address + ", deptId=" + deptId + ", jobId=" + jobId + ", paystep=" + paystep
 				+ ", empPhone=" + empPhone + ", salary=" + salary + ", bonus=" + bonus + ", marriage=" + marriage
-				+ ", hireDate=" + hireDate + ", idLevel=" + idLevel + ", sign=" + sign + "]";
+				+ ", hireDate=" + hireDate + ", idLevel=" + idLevel + ", sign=" + sign + ", deptName=" + deptName
+				+ ", jobName=" + jobName + "]";
 	}
-		
+
 }

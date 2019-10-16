@@ -78,7 +78,7 @@
 .skin-purple-light .user-panel-info > p{
 	text-align: center;
 }
-.skin-purple-light .user-panel-info > button#logout{
+.skin-purple-light .user-panel-info > input[type=button]#logout{
 	padding: 0;
 	font-size: small;
 	background: #fff;
@@ -89,7 +89,7 @@
 	height: 30px;
 	border: 1px solid #4d2497;
 }
-.skin-purple-light .user-panel-info > button#logout:hover{
+.skin-purple-light .user-panel-info > input[type=button]#logout:hover{
 	background: #4d2497;
 	color: #fff;
 }
