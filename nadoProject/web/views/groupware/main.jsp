@@ -550,7 +550,7 @@
 				
 		<!-- 관리자 메뉴 -->
 		<ul class="sidebar-menu" data-widget="tree">
-			<li><a href="/nado/apuser.ad"> <i
+			<li><a href="/nado/empic.ad"> <i
 					class="fa fa-drivers-license"></i> <span>사용자승인관리</span>
 			</a></li>
 			<li><a href="#"> <i class="fa fa-group"></i> <span>조직도</span>
