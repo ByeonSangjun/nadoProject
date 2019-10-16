@@ -1,0 +1,14 @@
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+*.class
+/nadoProject/
