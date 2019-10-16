@@ -199,12 +199,12 @@
 			<section class="sidebar">
 				<!-- 왼쪽 사이드바 사용자 정보 부분 Sidebar user panel -->
 				<div class="user-panel">
-					<div class="pull-left image">
+					<div class="user-panel-image">
 						<img src="/nado/resources/groupware/dist/img/혜진.png"
 							class="img-circle" alt="User Image">
 					</div>
 					<br>
-					<div class="pull-left info" align="center">
+					<div class="user-panel-info">
 						<p>인사부 팀장 손혜진</p>
 						<button id="logout">로그아웃</button>
 					</div>
@@ -523,12 +523,12 @@
 			<section class="sidebar">
 				<!-- 관리자 페이지 왼쪽 사이드바 사용자 정보 부분 Sidebar user panel -->
 				<div class="user-panel">
-					<div class="pull-left image">
+					<div class="user-panel-image">
 						<img src="/nado/resources/groupware/dist/img/혜진.png"
 							class="img-circle" alt="User Image">
 					</div>
 					<br>
-					<div class="pull-left info" align="center">
+					<div class="user-panel-info">
 						<p>인사부 팀장 손혜진</p>
 						<button id="logout">로그아웃</button>
 					</div>
@@ -608,7 +608,8 @@
 		<!-- 오른쪽 채팅 사이드바 Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark"
 			style="display: none;"></aside>
-
+		<!-- 오른쪽 채팅 사이드바 끝 /.control-sidebar -->
+		  
 		<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>

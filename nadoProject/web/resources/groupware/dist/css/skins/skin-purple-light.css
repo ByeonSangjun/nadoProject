@@ -2,6 +2,10 @@
  * Skin: Purple
  * ------------
  */
+ ::selection{
+  background: #c7bee8;
+  color: #414141;
+  }
 .skin-purple-light .main-header .navbar {
   background-color: #4d2497;
 }
@@ -67,14 +71,14 @@
 .skin-purple-light .main-sidebar {
   border-right: 1px solid #d2d6de;
 }
-.skin-purple-light .user-panel > .info,
-.skin-purple-light .user-panel > .info > a {
+.skin-purple-light .user-panel-info,
+.skin-purple-light .user-panel-info > a {
   color: #444444;
 }
-.skin-purple-light .user-panel > .info > p{
+.skin-purple-light .user-panel-info > p{
 	text-align: center;
 }
-.skin-purple-light .user-panel > .info > button#logout{
+.skin-purple-light .user-panel-info > button#logout{
 	padding: 0;
 	font-size: small;
 	background: #fff;
@@ -85,7 +89,7 @@
 	height: 30px;
 	border: 1px solid #4d2497;
 }
-.skin-purple-light .user-panel > .info > button#logout:hover{
+.skin-purple-light .user-panel-info > button#logout:hover{
 	background: #4d2497;
 	color: #fff;
 }
