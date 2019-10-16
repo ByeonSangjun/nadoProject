@@ -97,274 +97,175 @@ border: none; background: transparent;
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-purple-light sidebar-mini">
 	<div class="wrapper">
 
 		<header class="main-header">
-			<!-- Logo -->
-			<a href="/nado/views/groupware/main.jsp" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>N</b>D</span> <!-- logo for regular state and mobile devices -->
+			<!-- 로고 Logo -->
+			<a href="/nado/views/groupware/main.jsp" class="logo"> <!-- 미니 사이드바 50x50px 미니 로고 mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>NADO</b></span> <!-- 모바일 디바이스 사이즈 로고 logo for regular state and mobile devices -->
 				<span class="logo-lg"><b>NADO</b>Groupware</span>
 			</a>
-			<!-- Header Navbar: style can be found in header.less -->
+			
+		<!-- 관리자 페이지 헤더 네비바 Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
-				<!-- Sidebar toggle button-->
-				<a href="#" class="sidebar-toggle" data-toggle="push-menu"
-					role="button"> <span class="sr-only">Toggle navigation</span>
+				<!-- 관리자 페이지 토글 버튼 Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"> 
+				<span class="sr-only">Toggle navigation</span>
 				</a>
-
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
-						<!-- Messages: style can be found in dropdown.less-->
+						<!-- 관리자 페이지 쪽지 토글 버튼 Messages: style can be found in dropdown.less-->
 						<li class="dropdown messages-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
+								class="fa fa-envelope"></i> <span class="label label-success">3</span>
 						</a>
 							<ul class="dropdown-menu">
-								<li class="header">You have 4 messages</li>
+								<li class="header">3개의 새로운 쪽지가 있습니다.</li>
 								<li>
-									<!-- inner menu: contains the actual data 오른쪽 위 메시지 메뉴-->
+									<!-- 관리자 페이지 쪽지 토글 눌렀을 때 드롭다운 메뉴 inner menu: contains the actual data -->
 									<ul class="menu">
+										<!-- 관리자 페이지 쪽지 내용 부분 시작 start message --> 
 										<li>
-											<!-- start message --> <a href="#">
+											<a href="#">
 												<div class="pull-left">
-													<img
-														src="/nado/resources/groupware/dist/img/user2-160x160.jpg"
-														class="img-circle" alt="User Image">
+													<img src="/nado/resources/groupware/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 												</div>
-												<h4>
-													Support Team <small><i class="fa fa-clock-o"></i> 5
-														mins</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a>
+												<h4>보낸사람 이름<small><i class="fa fa-clock-o"></i> 시간</small></h4>
+												<p>쪽지 내용</p>
+											</a>
 										</li>
-										<!-- end message -->
-										<li><a href="#">
+										<!-- 관리자 페이지 쪽지 내용 부분 끝 end message -->
+										<li>
+											<a href="#">
 												<div class="pull-left">
-													<img
-														src="/nado/resources/groupware/dist/img/user3-128x128.jpg"
-														class="img-circle" alt="User Image">
+													<img src="/nado/resources/groupware/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
 												</div>
-												<h4>
-													AdminLTE Design Team <small><i
-														class="fa fa-clock-o"></i> 2 hours</small>
-												</h4>
+												<h4>AdminLTE Design Team <small><i class="fa fa-clock-o"></i> 2시간</small></h4>
 												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="pull-left">
+													<img src="/nado/resources/groupware/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+												</div>
+												<h4>Developers <small><i class="fa fa-clock-o"></i>오늘</small></h4>
+												<p>Why not buy a new awesome theme?</p>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<div class="pull-left">
+													<img src="/nado/resources/groupware/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image"></div>
+												<h4>Sales Department <small><i class="fa fa-clock-o"></i>어제</small></h4>
+												<p>Why not buy a new awesome theme?</p>
+											</a>
+										</li>
+										<li>
+											<a href="#">
 												<div class="pull-left">
 													<img
 														src="/nado/resources/groupware/dist/img/user4-128x128.jpg"
 														class="img-circle" alt="User Image">
 												</div>
-												<h4>
-													Developers <small><i class="fa fa-clock-o"></i>
-														Today</small>
-												</h4>
+												<h4>Reviewers <small><i class="fa fa-clock-o"></i> 2일</small></h4>
 												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
-												<div class="pull-left">
-													<img
-														src="/nado/resources/groupware/dist/img/user3-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Sales Department <small><i class="fa fa-clock-o"></i>
-														Yesterday</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
-										<li><a href="#">
-												<div class="pull-left">
-													<img
-														src="/nado/resources/groupware/dist/img/user4-128x128.jpg"
-														class="img-circle" alt="User Image">
-												</div>
-												<h4>
-													Reviewers <small><i class="fa fa-clock-o"></i> 2
-														days</small>
-												</h4>
-												<p>Why not buy a new awesome theme?</p>
-										</a></li>
+											</a>
+										</li>
 									</ul>
 								</li>
-								<li class="footer"><a href="#">See All Messages</a></li>
-							</ul></li>
-						<!-- Notifications: style can be found in dropdown.less -->
-						<li class="dropdown notifications-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
+								<li class="footer"><a href="#">모든 쪽지 보기</a></li>
+							</ul>
+						</li><!-- 관리자 페이지 쪽지 드롭다운 메뉴 끝 -->
+						
+						<!-- 관리자 페이지 알림 토글 버튼 Notifications: style can be found in dropdown.less -->
+						<li class="dropdown notifications-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+						<i class="fa fa-bell"></i> <span class="label label-warning">14</span>
 						</a>
 							<ul class="dropdown-menu">
-								<li class="header">You have 10 notifications</li>
+								<li class="header">14개의 알림이 있습니다.</li>
 								<li>
-									<!-- inner menu: contains the actual data -->
+									<!-- 관리자 페이지 알림 토글 버튼 드롭다운 메뉴 inner menu: contains the actual data -->
 									<ul class="menu">
-										<li><a href="#"> <i class="fa fa-users text-aqua"></i>
-												5 new members joined today
+										<li>
+											<a href="#"> <i class="fa fa-clipboard text-blue"></i>
+												전자결재가 승인되었습니다.
 										</a></li>
-										<li><a href="#"> <i class="fa fa-warning text-yellow"></i>
-												Very long description here that may not fit into the page
-												and may cause design problems
+										<li><a href="#"> <i class="fa fa-calendar text-yellow"></i>
+												오늘의 일정이 있습니다.
 										</a></li>
-										<li><a href="#"> <i class="fa fa-users text-red"></i>
-												5 new members joined
+										<li><a href="#"> <i class="fa fa-envelope text-purple"></i>
+												새로운 메일이 도착했습니다.
 										</a></li>
-										<li><a href="#"> <i
-												class="fa fa-shopping-cart text-green"></i> 25 sales made
+										<li><a href="#"> <i class="fa fa-table text-green"></i>
+												새로운 댓글이 달렸습니다.
 										</a></li>
-										<li><a href="#"> <i class="fa fa-user text-red"></i>
-												You changed your username
+										<li><a href="#"> <i class="fa fa-calendar-check-o text-red"></i>
+												예약신청이 반려되었습니다.
 										</a></li>
 									</ul>
 								</li>
-								<li class="footer"><a href="#">View all</a></li>
-							</ul></li>
-						<!-- Tasks: style can be found in dropdown.less -->
-						<li class="dropdown tasks-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <i
-								class="fa fa-flag-o"></i> <span class="label label-danger">9</span>
-						</a>
-							<ul class="dropdown-menu">
-								<li class="header">You have 9 tasks</li>
-								<li>
-									<!-- inner menu: contains the actual data -->
-									<ul class="menu">
-										<li>
-											<!-- Task item --> <a href="#">
-												<h3>
-													Design some buttons <small class="pull-right">20%</small>
-												</h3>
-												<div class="progress xs">
-													<div class="progress-bar progress-bar-aqua"
-														style="width: 20%" role="progressbar" aria-valuenow="20"
-														aria-valuemin="0" aria-valuemax="100">
-														<span class="sr-only">20% Complete</span>
-													</div>
-												</div>
-										</a>
-										</li>
-										<!-- end task item -->
-										<li>
-											<!-- Task item --> <a href="#">
-												<h3>
-													Create a nice theme <small class="pull-right">40%</small>
-												</h3>
-												<div class="progress xs">
-													<div class="progress-bar progress-bar-green"
-														style="width: 40%" role="progressbar" aria-valuenow="20"
-														aria-valuemin="0" aria-valuemax="100">
-														<span class="sr-only">40% Complete</span>
-													</div>
-												</div>
-										</a>
-										</li>
-										<!-- end task item -->
-										<li>
-											<!-- Task item --> <a href="#">
-												<h3>
-													Some task I need to do <small class="pull-right">60%</small>
-												</h3>
-												<div class="progress xs">
-													<div class="progress-bar progress-bar-red"
-														style="width: 60%" role="progressbar" aria-valuenow="20"
-														aria-valuemin="0" aria-valuemax="100">
-														<span class="sr-only">60% Complete</span>
-													</div>
-												</div>
-										</a>
-										</li>
-										<!-- end task item -->
-										<li>
-											<!-- Task item --> <a href="#">
-												<h3>
-													Make beautiful transitions <small class="pull-right">80%</small>
-												</h3>
-												<div class="progress xs">
-													<div class="progress-bar progress-bar-yellow"
-														style="width: 80%" role="progressbar" aria-valuenow="20"
-														aria-valuemin="0" aria-valuemax="100">
-														<span class="sr-only">80% Complete</span>
-													</div>
-												</div>
-										</a>
-										</li>
-										<!-- end task item -->
-									</ul>
-								</li>
-								<li class="footer"><a href="#">View all tasks</a></li>
-							</ul></li>
-						<!-- User Account: style can be found in dropdown.less -->
+								<li class="footer"><a href="#">전체 보기</a></li>
+							</ul></li><!-- 관리자 페이지 알림 토글 메뉴 끝 -->
+							
+						<!-- 관리자 페이지 채팅 토글 버튼 Control Sidebar Toggle Button -->
+						<li><a href="#" data-toggle="control-sidebar"><i
+								class="fa fa-wechat"></i></a></li><!-- 관리자 페이지 채팅 토글 끝 -->
+						
+						<!-- 관리자 페이지 상단 프로필 영역 User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> <!-- 오른쪽 상단 프로필 사진 -->
-								<img src="/nado/resources/groupware/dist/img/user2-160x160.jpg"
+							class="dropdown-toggle" data-toggle="dropdown"> 
+							<!-- 관리자 페이지 오른쪽 상단 프로필 사진 -->
+								<img src="/nado/resources/groupware/dist/img/혜진.png"
 								class="user-image" alt="User Image"> <span
-								class="hidden-xs"><%=loginEmp.getEmpName()%></span>
+								class="hidden-xs">손혜진</span>
 						</a>
+							<!-- 관리자 페이지 프로필 부분 클릭했을 때 드롭다운 메뉴 -->
 							<ul class="dropdown-menu">
-								<!-- User image -->
+								<!-- 프로필 사진 User image -->
 								<li class="user-header"><img
-									src="/nado/resources/groupware/dist/img/user2-160x160.jpg"
+									src="/nado/resources/groupware/dist/img/혜진.png"
 									class="img-circle" alt="User Image">
-
-									<p>
-										Alexander Pierce - Web Developer <small>Member since
-											Nov. 2012</small>
-									</p></li>
-								<!-- Menu Body -->
-								<li class="user-body">
-									<div class="row">
-										<div class="col-xs-4 text-center">
-											<a href="#">Followers</a>
-										</div>
-										<div class="col-xs-4 text-center">
-											<a href="#">Sales</a>
-										</div>
-										<div class="col-xs-4 text-center">
-											<a href="#">Friends</a>
-										</div>
-									</div> <!-- /.row -->
-								</li>
-								<!-- Menu Footer-->
+									<p>인사부 팀장</p>
+									<p>손혜진</p></li>
+								<!-- 관리자 페이지 프로필 수정, 로그아웃 버튼 Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<a href="#" class="btn btn-default btn-flat">프로필</a>
 									</div>
 									<div class="pull-right">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<a href="#" class="btn btn-default btn-flat">로그아웃</a>
 									</div>
 								</li>
-							</ul></li>
-						<!-- Control Sidebar Toggle Button -->
-						<li><a href="#" data-toggle="control-sidebar"><i
-								class="fa fa-gears"></i></a></li>
+							</ul></li><!-- 관리자 페이지 프로필 영역 끝 -->
 					</ul>
 				</div>
 			</nav>
 		</header>
-		<!-- Left side column. contains the logo and sidebar 사이드바 시작-->
+
+		<!-- 관리자 페이지 왼쪽 사이드바 시작 Left side column. contains the logo and sidebar -->
 		<aside class="main-sidebar">
 			<!-- sidebar: style can be found in sidebar.less -->
 			<section class="sidebar">
-				<!-- 왼쪽 사이드바 사용자 정보 부분 Sidebar user panel -->
+				<!-- 관리자 페이지 왼쪽 사이드바 사용자 정보 부분 Sidebar user panel -->
 				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="/nado/resources/groupware/dist/img/user2-160x160.jpg"
+					<div class="user-panel-image">
+						<img src="/nado/resources/groupware/dist/img/혜진.png"
 							class="img-circle" alt="User Image">
 					</div>
-					<div class="pull-left info">
-						<p><%=loginEmp.getEmpName()%></p>
-						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/nado/emplo">로그아웃</a>
+					<br>
+					<div class="user-panel-info">
+						<p>인사부 팀장 손혜진</p>
+						<button id="logout">로그아웃</button>
 					</div>
 				</div>
-				<!-- 왼쪽 사이드바 검색 기능 부분search form -->
+
+				<!-- 관리자 페이지 왼쪽 사이드바 검색 기능 부분 search form -->
 				<form action="#" method="get" class="sidebar-form">
 					<div class="input-group">
-						<input type="text" name="q" class="form-control"
-							placeholder="Search..."> <span class="input-group-btn">
+						<input type="text" name="q" class="form-control" placeholder="검색">
+						<span class="input-group-btn">
 							<button type="submit" name="search" id="search-btn"
 								class="btn btn-flat">
 								<i class="fa fa-search"></i>
@@ -372,48 +273,31 @@ border: none; background: transparent;
 						</span>
 					</div>
 				</form>
-				<!-- /.search form -->
-				<!-- 사이드 메뉴바 시작 sidebar menu: : style can be found in sidebar.less  -->
+				<!-- 관리자 페이지 왼쪽 사이드바 검색 기능 끝 /.search form -->
 				
-				<ul class="sidebar-menu" data-widget="tree">
-					<li class="header">MAIN NAVIGATION</li>
-					<li>
-						<a href="/nado/views/groupware/manager/userApproval.jsp"> 
-							<i class="fa fa-dashboard"></i>
-						  	<span>사용자승인관리</span>
-				   		</a>
-					</li>
-					<li><a href="#"> <i class="fa fa-files-o"></i>
-							<span>조직도</span><span class="pull-right-container"> <span
-								class="label label-primary pull-right">4</span>
-							</span>
-						</a>
-					</li>
-					<li class="treeview"><a href="#"><i
-							class="fa fa-envelope"></i><span>게시판 관리</span>
-							 <span class="pull-right-container"><i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>공지사항</a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>설문조사</a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-circle-o"></i>자유게시판</a>
-							</li>
-					</ul>
-					</li>
-					<li><a href="calendar/calendarMonthView.jsp"><i
-							class="fa fa-calendar"></i> <span>전자결재양식</span></a></li>
-				</ul>
-			</section>
-			<!-- /.sidebar 사이드바 끝-->
-		</aside>
+		<!-- 관리자 메뉴 -->
+		<ul class="sidebar-menu" data-widget="tree">
+			<li><a href="/nado/apuser.ad" style="background:#f3f1fa;"> <i
+					class="fa fa-drivers-license"></i> <span>사용자승인관리</span>
+			</a></li>
+			<li><a href="#"> <i class="fa fa-group"></i> <span>조직도</span>
+			</a></li>
+			<li class="treeview"><a href="#"><i class="fa fa-list"></i><span>게시판
+						관리</span> <span class="pull-right-container"><i
+						class="fa fa-angle-left pull-right"></i> </span> </a>
+				<ul class="treeview-menu">
+					<li><a href="#"><i class="fa fa-angle-right"></i>공지사항</a></li>
+					<li><a href="#"><i class="fa fa-angle-right"></i>설문조사</a></li>
+					<li><a href="#"><i class="fa fa-angle-right"></i>자유게시판</a></li>
+				</ul></li>
+			<li><a href="calendar/calendarMonthView.jsp"><i
+					class="fa fa-clipboard"></i> <span>전자결재양식</span></a></li>
+		</ul>
 
+		</section>
+		<!-- 관리자 메뉴 끝 /.sidebar -->
+		</aside>
+		
 		<!-- Content Wrapper. Contains page content  가운데 작업 영역-->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -422,7 +306,7 @@ border: none; background: transparent;
 					사용자 승인 관리 <small>사용자</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+					<li><a href="#"><i class="fa fa-home"></i> 홈</a></li>
 					<li class="active">사용자 승인 관리</li>
 				</ol>
 			</section>
@@ -596,184 +480,18 @@ border: none; background: transparent;
 		<!-- /.content-wrapper -->
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.4.18
+				<b>Version</b> 1.0.0
 			</div>
-			<strong>Copyright &copy; 2014-2019 <a
-				href="https://adminlte.io">AdminLTE</a>.
+			<strong>Copyright &copy; 2019 <a href="/nado/index.jsp">NADO
+					Groupware</a>.
 			</strong> All rights reserved.
 		</footer>
 
-		<!-- 채팅으로 쓸 부분 Control Sidebar -->
+		<!-- 오른쪽 채팅 사이드바 Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark"
-			style="display: none;">
-			<!-- Create the tabs -->
-			<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-				<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i
-						class="fa fa-home"></i></a></li>
-				<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
-						class="fa fa-gears"></i></a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content">
-				<!-- Home tab content -->
-				<div class="tab-pane" id="control-sidebar-home-tab">
-					<h3 class="control-sidebar-heading">Recent Activity</h3>
-					<ul class="control-sidebar-menu">
-						<li><a href="/nado/views/groupware/chatting/test.html">채팅</a>
-							<a href="javascript:void(0)"> <i
-								class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-									<p>Will be 23 on April 24th</p>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)"> <i
-								class="menu-icon fa fa-user bg-yellow"></i>
-
-								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Frodo Updated His
-										Profile</h4>
-
-									<p>New phone +1(800)555-1234</p>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)"> <i
-								class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Nora Joined Mailing
-										List</h4>
-
-									<p>nora@example.com</p>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)"> <i
-								class="menu-icon fa fa-file-code-o bg-green"></i>
-
-								<div class="menu-info">
-									<h4 class="control-sidebar-subheading">Cron Job 254
-										Executed</h4>
-
-									<p>Execution time 5 seconds</p>
-								</div>
-						</a></li>
-					</ul>
-					<!-- /.control-sidebar-menu -->
-
-					<h3 class="control-sidebar-heading">Tasks Progress</h3>
-					<ul class="control-sidebar-menu">
-						<li><a href="javascript:void(0)">
-								<h4 class="control-sidebar-subheading">
-									Custom Template Design <span
-										class="label label-danger pull-right">70%</span>
-								</h4>
-
-								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-danger"
-										style="width: 70%"></div>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)">
-								<h4 class="control-sidebar-subheading">
-									Update Resume <span class="label label-success pull-right">95%</span>
-								</h4>
-
-								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-success"
-										style="width: 95%"></div>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)">
-								<h4 class="control-sidebar-subheading">
-									Laravel Integration <span
-										class="label label-warning pull-right">50%</span>
-								</h4>
-
-								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-warning"
-										style="width: 50%"></div>
-								</div>
-						</a></li>
-						<li><a href="javascript:void(0)">
-								<h4 class="control-sidebar-subheading">
-									Back End Framework <span class="label label-primary pull-right">68%</span>
-								</h4>
-
-								<div class="progress progress-xxs">
-									<div class="progress-bar progress-bar-primary"
-										style="width: 68%"></div>
-								</div>
-						</a></li>
-					</ul>
-					<!-- /.control-sidebar-menu -->
-
-				</div>
-				<!-- /.tab-pane -->
-				<!-- Stats tab content -->
-				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
-					Content</div>
-				<!-- /.tab-pane -->
-				<!-- Settings tab content -->
-				<div class="tab-pane" id="control-sidebar-settings-tab">
-					<form method="post">
-						<h3 class="control-sidebar-heading">General Settings</h3>
-
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Report panel
-								usage <input type="checkbox" class="pull-right" checked>
-							</label>
-
-							<p>Some information about this general settings option</p>
-						</div>
-						<!-- /.form-group -->
-
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Allow mail
-								redirect <input type="checkbox" class="pull-right" checked>
-							</label>
-
-							<p>Other sets of options are available</p>
-						</div>
-						<!-- /.form-group -->
-
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Expose author
-								name in posts <input type="checkbox" class="pull-right" checked>
-							</label>
-
-							<p>Allow the user to show his name in blog posts</p>
-						</div>
-						<!-- /.form-group -->
-						<h3 class="control-sidebar-heading">채팅셋팅</h3>
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Show me as
-								online <input type="checkbox" class="pull-right" checked>
-							</label>
-						</div>
-						<!-- /.form-group -->
-
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Turn off
-								notifications <input type="checkbox" class="pull-right">
-							</label>
-						</div>
-						<!-- /.form-group -->
-
-						<div class="form-group">
-							<label class="control-sidebar-subheading"> Delete chat
-								history <a href="javascript:void(0)" class="text-red pull-right"><i
-									class="fa fa-trash-o"></i></a>
-							</label>
-						</div>
-						<!-- /.form-group -->
-					</form>
-				</div>
-				<!-- /.tab-pane -->
-			</div>
-		</aside>
-		<!-- /.control-sidebar -->
+			style="display: none;"></aside>
+		<!-- 오른쪽 채팅 사이드바 끝 /.control-sidebar -->
+		
 		<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>
