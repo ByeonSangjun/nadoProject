@@ -10,6 +10,10 @@
  * Core: General Layout Style
  * -------------------------
  */
+ ::selection{
+  background: #c7bee8;
+  color: #414141;
+ }
 html,
 body {
   height: 100%;
@@ -537,6 +541,7 @@ a:focus {
   height: 150px;
   padding: 10px;
   overflow: hidden;
+  text-align: center;
 }
 .user-panel:before,
 .user-panel:after {
@@ -550,8 +555,9 @@ a:focus {
   width: 100%;
   max-width: 60px;
   height: auto;
-  margin-left: 75px;
-  margin-top: 10px;
+  margin-left: auto;
+  margin-top: auto;
+  display: block;
 }
 .user-panel > .info {
   padding: 5px 5px 5px 15px;
