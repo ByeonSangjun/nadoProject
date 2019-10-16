@@ -19,7 +19,7 @@ public class EmployeeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String query = "select * from employee where user_id = ?";
+		String query = "select * from employee a left join job b on a.job_id = b.job_id left join dept c on a.dept_id = c.dept_id where user_id = ?";
 
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -50,6 +50,8 @@ public class EmployeeDao {
 				emp.setHireDate(rset.getDate("hire_date"));
 				emp.setIdLevel(rset.getString("id_level"));
 				emp.setSign(rset.getString("sign"));
+				emp.setDeptName(rset.getString("dept_name"));
+				emp.setJobName(rset.getString("job_name"));
 			}
 		
 		} catch (SQLException e) {
