@@ -674,7 +674,7 @@
             <!-- 관리자 메뉴 -->
             <ul class="sidebar-menu" data-widget="tree">
                <li>
-                  <a href="/nado/apuser.ad"> 
+                  <a href="/nado/empic.ad"> 
                      <i class="fa fa-drivers-license"></i> <span>사용자승인관리</span>
                   </a>
                </li>

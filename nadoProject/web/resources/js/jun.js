@@ -1,25 +1,71 @@
 /**
- * 
+ *  Made by Jun
  */
+
+//클라우드 로그인 유효성검사
+$("#cloudLoginForm").validate({
+	rules : {
+		cloud_user_id : {
+			required : true
+		},
+		cloud_user_pwd : {
+			required : true
+		}
+	},
+	messages : {
+		cloud_user_id : {
+			required : "아이디를 입력하세요."
+		},
+		cloud_user_pwd : {
+			required : "비밀번호를 입력하세요."
+		}
+	},
+	submitHandler : cloudSubmitForm
+});
+
+//클라우드 로그인 ajax
+function cloudSubmitForm(){
+	var clData = $("#cloudLoginForm").serialize();
+	$.ajax({
+		url : "/nado/clli",
+		type : "post",
+		data : clData,
+		success : function(result){
+			if (result == 1) {
+				setTimeout("location.href='/nado/index.jsp'", 1000);
+			} else if (result == 2) {
+				$("#messageBox2").html("<div class='alert alert-danger'>비밀번호를 확인하세요.</div>");
+				$("#cloud_user_pwd").select();
+			} else {
+				$("#messageBox2").html("<div class='alert alert-danger'>아이디가 없어요!</div>");
+				$("#cloud_user_id").select();
+			}
+		}
+	});
+}
+
+//회사 입력후 로그인 유효성검사
 $("#loginForm").validate({
-			rules : {
-				user_id : {
-					required : true
-				},
-				user_pwd : {
-					required : true
-				}
-			},
-			messages : {
-				user_id : {
-					required : "아이디를 입력하세요."
-				},
-				user_pwd : {
-					required : "비밀번호를 입력하세요."
-				}
-			},
-			submitHandler : submitForm
-		})
+	rules : {
+		user_id : {
+			required : true
+		},
+		user_pwd : {
+			required : true
+		}
+	},
+	messages : {
+		user_id : {
+			required : "아이디를 입력하세요."
+		},
+		user_pwd : {
+			required : "비밀번호를 입력하세요."
+		}
+	},
+	submitHandler : submitForm
+});
+
+//회사 입력후 로그인 ajax
 		function submitForm() {
 			var data = $("#loginForm").serialize();
 			$.ajax({

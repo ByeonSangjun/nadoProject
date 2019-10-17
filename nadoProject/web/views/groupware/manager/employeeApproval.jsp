@@ -5,6 +5,8 @@
 	Employee loginEmp = (Employee) session.getAttribute("loginEmp"); //267, 321 사용자 프로필
 	ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("list");  //411
 	int listSize = list.size();
+	
+	//217 채팅 모달
 %>
 
 <!DOCTYPE html>
@@ -209,9 +211,13 @@ border: none; background: transparent;
 								<li class="footer"><a href="#">전체 보기</a></li>
 							</ul></li><!-- 관리자 페이지 알림 토글 메뉴 끝 -->
 							
-						<!-- 관리자 페이지 채팅 토글 버튼 Control Sidebar Toggle Button -->
-						<li><a href="#" data-toggle="control-sidebar"><i
-								class="fa fa-wechat"></i></a></li><!-- 관리자 페이지 채팅 토글 끝 -->
+<!-- 						관리자 페이지 채팅 토글 버튼 Control Sidebar Toggle Button -->
+<!-- 						<li><a href="#" data-toggle="control-sidebar"><i -->
+<!-- 								class="fa fa-wechat"></i></a></li>관리자 페이지 채팅 토글 끝 -->
+
+	<!-- 				관리자 페이지 채팅 토글 버튼 Control Sidebar Toggle Button -->
+						<li><a href="#" data-toggle="control-sidebar"><i class="fa fa-wechat"></i></a></li>
+
 						
 						<!-- 관리자 페이지 상단 프로필 영역 User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
@@ -457,12 +463,15 @@ border: none; background: transparent;
                   <td><%= emp.getUserId() %></td>
                   <td><%= emp.getHireDate() %></td>                  
                   <td><a href="#<%=emp.getEmpId() %>"> 확인 후 승인</a></td>
+                  <td><a data-target="#<%=emp.getEmpId() %>" data-toggle="modal"> 확인 후 승인</a></td>
+                  
                 </tr>     
                 <%}} %>
                 </tbody>
               </table>
              
             </div>
+            
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -472,8 +481,18 @@ border: none; background: transparent;
         <!-- /.col -->
       </div>
       <!-- /.row -->
-				
-				
+				<div class="row">
+					<div class="modal" id="" tabindex="-1">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button class="close" data-dismiss="modal">&times;</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</section>
 			<!-- /.content -->
 		</div>
