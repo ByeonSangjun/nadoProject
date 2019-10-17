@@ -286,7 +286,7 @@
 
                <!-- 조직도 메뉴 -->
                <li class="notreeview">
-                  <a href="/nado/emplist"> 
+                  <a href="/nado/emplist.ad"> 
                      <i class="fa fa-group"></i> <span>조직도</span>
                   </a>
                </li>

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import employee.model.vo.Dept;
 import employee.model.vo.Employee;
 
 public class EmployeeDao {
@@ -184,5 +185,165 @@ public class EmployeeDao {
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 우수
+
+		public ArrayList<Employee> selectList(Connection conn) {
+			ArrayList<Employee> list = new ArrayList<Employee>();
+			Statement stmt = null;
+			ResultSet rset = null;
+
+			String query = "select emp_id, email, my_profile, user_id, emp_name, user_pwd, emp_no, "
+					+ "phone, address, dept_name, job_name, paystep, emp_phone, salary, bonus, marriage, "
+					+ "hire_date, id_level,sign from employee "
+					+ "LEFT JOIN dept USING (dept_ID) left join job using (job_id)";
+
+			try {
+				stmt = conn.createStatement();
+
+				rset = stmt.executeQuery(query);
+
+				while (rset.next()) {
+					Employee employee = new Employee();
+
+					employee.setEmpId(rset.getString("emp_id"));
+					employee.setEmail(rset.getString("email"));
+					employee.setMyProfile(rset.getString("my_profile"));
+					employee.setUserId(rset.getString("user_id"));
+					employee.setEmpName(rset.getString("emp_name"));
+					employee.setUserPwd(rset.getString("user_pwd"));
+					employee.setEmpNo(rset.getString("emp_no"));
+					employee.setPhone(rset.getString("phone"));
+					employee.setAddress(rset.getString("address"));
+					employee.setDeptId(rset.getString("dept_name"));
+					employee.setJobId(rset.getString("job_name"));
+					employee.setPaystep(rset.getString("paystep"));
+					employee.setEmpPhone(rset.getString("emp_phone"));
+					employee.setSalary(rset.getInt("salary"));
+					employee.setBonus(rset.getDouble("bonus"));
+					employee.setMarriage(rset.getString("marriage"));
+					employee.setHireDate(rset.getDate("hire_date"));
+					employee.setIdLevel(rset.getString("id_level"));
+					employee.setSign(rset.getString("sign"));
+
+					list.add(employee);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(stmt);
+			}
+
+			return list;
+		}
+
+		
+		
+		public Employee selectOne(Connection conn, String empId) {
+			Employee employee = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+
+			String query = "select * from employee where empid = ?";
+
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, empId);
+
+				rset = pstmt.executeQuery();
+
+				if (rset.next()) {
+					employee = new Employee();
+
+					employee.setEmpId(rset.getString("empid"));
+					employee.setEmail(rset.getString("email"));
+					employee.setMyProfile(rset.getString("myprofile"));
+					employee.setUserId(rset.getString("userid"));
+					employee.setEmpName(rset.getString("empname"));
+					employee.setUserPwd(rset.getString("userpwd"));
+					employee.setEmpNo(rset.getString("empno"));
+					employee.setPhone(rset.getString("phone"));
+					employee.setAddress(rset.getString("address"));
+					employee.setDeptId(rset.getString("deptid"));
+					employee.setJobId(rset.getString("jobid"));
+					employee.setPaystep(rset.getString("paystep"));
+					employee.setEmpPhone(rset.getString("empphone"));
+					employee.setSalary(rset.getInt("salary"));
+					employee.setBonus(rset.getDouble("bonus"));
+					employee.setMarriage(rset.getString("marriage"));
+					employee.setHireDate(rset.getDate("hiredate"));
+					employee.setIdLevel(rset.getString("idlevel"));
+					employee.setSign(rset.getString("sign"));
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+
+			return employee;
+		}
+
+		
+		
+		public ArrayList<Dept> selectgwList(Connection conn) {
+			ArrayList<Dept> dlist = new ArrayList<Dept>();
+			Statement stmt = null;
+			ResultSet rset = null;
+			
+			String query = "select emp_name, dept_id, DEPT_NAME, DEPT_ORIGINID, DEPT_LEVEL, FAX " + 
+					"from dept " + 
+					"left join employee using (dept_id)";
+
+			try {
+				stmt = conn.createStatement();
+
+				rset = stmt.executeQuery(query);
+
+				while (rset.next()) {
+					
+					Dept dept = new Dept();
+					
+					dept.setDeptId(rset.getString("dept_id"));
+					dept.setDeptName(rset.getString("dept_name"));
+					dept.setDeptOriginId(rset.getString("dept_originid"));
+					dept.setDeptLevel(rset.getInt("dept_level"));
+					dept.setFax(rset.getString("fax"));
+					
+
+					dlist.add(dept);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(stmt);
+			}
+
+			return dlist;
+
+		}
+	
+	
+	
+	
 
 }
