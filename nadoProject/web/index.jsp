@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="cloud.model.vo.Cloud" %>
+<%
+	Cloud loginUser = (Cloud)session.getAttribute("loginUser");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,11 +40,22 @@
 						<li><a href="/nado/views/homepage/about.html">기능 소개</a></li>
 						<li><a href="/nado/views/homepage/about.html">상품/가격 안내</a></li>
 						<li><a href="#">고객지원</a></li>
-						<li><a href="/nado/views/groupware/main.jsp">그룹웨어로 이동</a></li>
+						<% if(loginUser != null){ %>
+							<% if(loginUser.getClId().equals("cloudadmin")){ %>
+							<li><a href="/nado/views/groupware/main.jsp">관리 페이지로 이동</a></li>
+							<%}else{ %>
+							<li><a href="/nado/views/homepage/companyLogin.jsp">그룹웨어로 이동</a></li>
+							<%} %>
+							</ul>
+				</nav>
+				<div class="book_button"><a href="/nado/cllo">로그아웃</a></div>
+							
+						<%}else{ %>
 					</ul>
 				</nav>
 				<div class="book_button"><a href="/nado/views/homepage/login.jsp">로그인</a></div>
 				<div class="book_button"><a href="/nado/views/homepage/employeeEnroll.html">회원가입</a></div>
+				<%}%>
 				<!-- Hamburger Menu -->
 				<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 			</div>
