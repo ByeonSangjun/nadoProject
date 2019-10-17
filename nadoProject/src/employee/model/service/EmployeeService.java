@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import employee.model.dao.EmployeeDao;
-import employee.model.vo.Company;
+import employee.model.vo.Dept;
 import employee.model.vo.Employee;
 
 public class EmployeeService {
@@ -59,6 +59,44 @@ public class EmployeeService {
 		
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//우수
+	
+		public ArrayList<Employee> selectList(Object comp) {
+			Connection conn = getConnection(comp);
+			ArrayList<Employee> list = eDao.selectList(conn);
+			close(conn);
+			return list;
+		}
+		
+		
+		public Employee selectOne(Object comp, String empId) {
+			Connection conn = getConnection(comp);
+			Employee employee = eDao.selectOne(conn, empId);
+			close(conn);
+			return employee;
+		}
+		
+		//그룹웨어 관리자용 조직도 리스트
+		public ArrayList<Dept> selectgwList(Object comp) {
+			Connection conn = getConnection(comp);
+			ArrayList<Dept> dlist = eDao.selectgwList(conn);
+			close(conn);
+			return dlist;
+		}
+		
 
 	
 
