@@ -2,7 +2,9 @@
  *  Made by Jun
  */
 
-//클라우드 로그인 유효성검사
+// 클라우드 로그인 유효성검사
+
+
 $("#cloudLoginForm").validate({
 	rules : {
 		cloud_user_id : {
@@ -23,6 +25,56 @@ $("#cloudLoginForm").validate({
 	submitHandler : cloudSubmitForm
 });
 
+$("#email").blur(function() {
+	var email_check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	var email = $(this).val();
+	if(!email_check.test(email)){
+		$("#emailAlertBox").html("<small class='id1'>이메일 형식에 맞지 않습니다.</small>").css("color", "darkred");
+	}else{
+		$.ajax({
+			url : "/nado/empemch",
+			type : "post",
+			data : {
+				email : email
+			},
+			success : function(result) {
+				if (result > 0) {
+					$("#emailAlertBox").html("<small>이미 사용중인 메일입니다.</small>")
+							.css("color", "darkred");
+				} else {
+					$("#emailAlertBox").html("<small>사용가능합니다.</small>").css(
+							"color", "green");
+				}
+			}
+		});
+	}
+}); // 이메일 확인 끝
+
+$("#phone").blur(function() {
+	var phone_check = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+	var phone = $(this).val();
+	if(!phone_check.test(phone)){
+		$("#phoneAlertBox").html("<small class='id1'>핸드폰 형식에 맞지 않습니다.</small>").css("color", "darkred");
+	}else{
+		$.ajax({
+			url : "/nado/empphch",
+			type : "post",
+			data : {
+				phone : phone
+			},
+			success : function(result) {
+				if (result > 0) {
+					$("#phoneAlertBox").html("<small>이미 사용중인 번호입니다.</small>")
+							.css("color", "darkred");
+				} else {
+					$("#phoneAlertBox").html("<small>사용가능합니다.</small>").css(
+							"color", "green");
+				}
+			}
+		});
+	}
+}); // 핸드폰 확인 끝
+
 //클라우드 로그인 ajax
 function cloudSubmitForm(){
 	var clData = $("#cloudLoginForm").serialize();
@@ -32,7 +84,7 @@ function cloudSubmitForm(){
 		data : clData,
 		success : function(result){
 			if (result == 1) {
-				setTimeout("location.href='/nado/index.jsp'", 1000);
+				setTimeout("location.href='/nado/index.jsp'", 800);
 			} else if (result == 2) {
 				$("#messageBox2").html("<div class='alert alert-danger'>비밀번호를 확인하세요.</div>");
 				$("#cloud_user_pwd").select();
@@ -74,7 +126,7 @@ $("#loginForm").validate({
 						data : data,
 						success : function(result) {
 							if (result == 1) {
-								setTimeout("location.href='/nado/views/groupware/main.jsp'", 1000);
+								setTimeout("location.href='/nado/views/groupware/main.jsp'", 800);
 							} else if (result == 2) {
 								$("#messageBox").html("<div class='alert alert-danger'>승인처리중인 아이디입니다.</div>");
 								$("#user_id").select();
@@ -101,13 +153,12 @@ $("#loginForm").validate({
 					success : function(result){
 						if(result >0){
 							$("#idAlertBox").html("<small>이미 사용중인 아이디입니다.</small>").css("color", "darkred");							
-						}else{						
+						}else{					
 							$("#idAlertBox").html("<small>아이디 생성 성공!</small>").css("color", "green");
 						}
 					}
-				
 				});
-			}		
+			}	
 		}); //아이디 확인 끝
 		
 		//비밀번호 검사
@@ -249,8 +300,6 @@ $("#loginForm").validate({
 			});
 		}
 
-
-
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -298,5 +347,3 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
-

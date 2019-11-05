@@ -216,9 +216,8 @@ border: none; background: transparent;
 <!-- 								class="fa fa-wechat"></i></a></li>관리자 페이지 채팅 토글 끝 -->
 
 	<!-- 				관리자 페이지 채팅 토글 버튼 Control Sidebar Toggle Button -->
-						<li><a href="#" data-toggle="control-sidebar"><i class="fa fa-wechat"></i></a></li>
-
-						
+						<li><a href="#" onclick="javascript:chatMain();"><i class="fa fa-wechat"></i></a></li>
+			
 						<!-- 관리자 페이지 상단 프로필 영역 User Account: style can be found in dropdown.less -->
 						<li class="dropdown user user-menu"><a href="#"
 							class="dropdown-toggle" data-toggle="dropdown"> 
@@ -318,127 +317,6 @@ border: none; background: transparent;
 			</section>
 			<!-- Main content -->
 			<section class="content">
-			<% if(listSize >0) {
-			for(Employee emp : list){
-			%>
-			<form action="/nado/empapp.ad" method="post">
-			<div class="popup" id="<%=emp.getEmpId()%>">
-			<!-- 왼쪽 사용자 입력 사항 -->
-			<div id="pop_left">
-				<table>
-			<tr>
-				<th><label for="username">이름</label></th>
-				</tr><tr>
-					<td>
-					<input type="text" class="inbox" name="username" id="username" value="<%= emp.getEmpName() %>" readonly>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="userid">아이디</label></th>
-					</tr>
-					<tr>
-					<td>
-					<input type="text" class="inbox"name="userid" id="userid" value="<%= emp.getUserId() %>" readonly>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="empno">생년월일</label></th>
-					</tr><tr>
-					<td>
-					<input type="text" class="inbox"name="empno" id="empno" value="<%= emp.getEmpNo() %>" readonly>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="email">이메일</label></th>
-					</tr><tr>
-					<td>
-					<input type="text" class="inbox"name="email" id="email" value="<%= emp.getEmail() %>" readonly>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="phone">휴대전화</label></th>
-					</tr><tr>
-					<td>
-					<input type="text" class="inbox"name="phone" id="phone" value="<%= emp.getPhone() %>" readonly>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="address">주소</label></th>
-					</tr><tr>
-					<td>
-					<input type="text" class="inbox"name="address" id="address" value="<%= emp.getAddress() %>" readonly>
-					</td>
-					</tr>
-				</table>
-			</div>
-			<!--  오른쪽 관리자 입력 사항 -->
-			<div id="pop_right">
-			<table>
-			<tr>
-				<th><label for="empid">사번</label></th>
-				</tr><tr>
-					<td>
-					<input type="text" class="inbox" name="empid" id="empid" >
-					</td>
-					</tr>
-					<tr>
-					<th><label for="idlevel">계정구분</label></th>
-					</tr>
-					<tr>
-					<td>
-					<input type="radio" name="idlevel" value="G" >일반사원
-					<input type="radio" name="idlevel" value="M">관리자
-					</td>
-					</tr>
-					<tr>
-					<th><label for="deptid">부서</label></th>
-					</tr><tr>
-					<td>
-					<select name="deptid" id="deptid">		
-					<option value="A1">관리팀</option>
-					<option value="A2">인사팀</option>
-					<option value="B1">개발1팀</option>
-					<option value="B2">개발2팀</option>
-					<option value="C1">디자인팀</option>
-					<option value="D1">영업팀</option>
-					
-					</td>
-					</tr>
-					<tr>
-					<th><label for="jobid">직책</label></th>
-					</tr><tr>
-					<td>
-					<select name="jobid" id="jobid" >
-					<option value="J1">대표이사</option>
-					<option value="J2">부사장</option>
-					<option value="J3">부장</option>
-					<option value="J4">차장</option>
-					<option value="J5">과장</option>
-					<option value="J6">대리</option>
-					<option value="J7">사원</option>
-					
-					</select>
-					<select name="paystep" id="paystep">
-					<option value="1호봉">1호봉</option>
-					<option value="2호봉">2호봉</option>
-					<option value="3호봉">3호봉</option>
-					</select>
-					</td>
-					</tr>
-					<tr>
-					<th><label for="state">상태</label></th>
-					</tr><tr>
-					<td>
-					<input type="radio" name="state"  value="재직">재직
-					<input type="radio" name="state"  value="휴직">휴직
-					</td>
-					</tr>
-				</table>
-			</div>
-			<span class="pop"><button type="submit" style="background:none;">승인</button></span>&nbsp;
-			<span class="pop"><button>거절</button></span></div>
-			</form>
-			<%}} %>
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -455,21 +333,18 @@ border: none; background: transparent;
                 </tr>
                 </thead>
                 <tbody>
-                <% if(listSize>0){ 
+                <%
                 for(Employee emp : list){
                 %>
                 <tr> 
                   <td><%= emp.getEmpName() %></td>
                   <td><%= emp.getUserId() %></td>
                   <td><%= emp.getHireDate() %></td>                  
-                  <td><a href="#<%=emp.getEmpId() %>"> 확인 후 승인</a></td>
-                  <td><a data-target="#<%=emp.getEmpId() %>" data-toggle="modal"> 확인 후 승인</a></td>
-                  
-                </tr>     
-                <%}} %>
+                  <td><a onclick="openEmpApp('<%= emp.getEmpId() %>');" style="cursor: pointer"> 확인 후 승인</a></td>
+                </tr>
+                <%} %>
                 </tbody>
               </table>
-             
             </div>
             
             <!-- /.box-body -->
@@ -481,18 +356,6 @@ border: none; background: transparent;
         <!-- /.col -->
       </div>
       <!-- /.row -->
-				<div class="row">
-					<div class="modal" id="" tabindex="-1">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button class="close" data-dismiss="modal">&times;</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</section>
 			<!-- /.content -->
 		</div>
@@ -526,6 +389,15 @@ border: none; background: transparent;
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
+		
+		function openEmpApp(data){
+			window.open("/nado/empif.ad?empId="+data, data, "width=900px, height=600px, menubar=no, status=no, toolbar=no");
+		};
+		
+		function chatMain(){
+			window.open("/nado/chtm?emp_id=<%= loginEmp.getEmpId() %>","ChatMain","width=410px, height=800px, menubar=no, status=no, toolbar=no");
+		}
+		
 	</script>
 	<!-- Bootstrap 3.3.7 -->
 	<script
@@ -569,5 +441,6 @@ border: none; background: transparent;
 	<script src="/nado/resources/groupware/dist/js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="/nado/resources/groupware/dist/js/demo.js"></script>
+	<script type="text/javascript" src="/nado/resources/js/jun.js"></script>
 </body>
 </html>

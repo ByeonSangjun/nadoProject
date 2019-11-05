@@ -5,7 +5,6 @@
 <%
 	Employee loginEmp = (Employee) session.getAttribute("loginEmp"); //267, 321 사용자 프로필
 	String manager = loginEmp.getIdLevel(); //340 줄
-
 	// 521줄 560줄 까지 관리자 메뉴 
 	
 	//ArrayList<Employee> list = (ArrayList<Employee>)request.getAttribute("list");

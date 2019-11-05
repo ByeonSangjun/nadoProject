@@ -7,6 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NADO</title>
 <link rel="stylesheet" href="/nado/resources/css/bootstrap.css">
+<style type="text/css">
+.error{
+	color: darkred;
+}
+</style>
 </head>
 <body>
 	<div class="container" style="margin-top: 60px;">

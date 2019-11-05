@@ -23,9 +23,11 @@ public class Employee implements java.io.Serializable{
 	private String marriage;
 	private java.sql.Date hireDate;
 	private String idLevel;
-	private String sign;
 	private String deptName;
 	private String jobName;
+	private String originalSign;
+	private String reNameSign;
+	private String fax;
 	
 	public Employee() {}
 	
@@ -48,7 +50,7 @@ public class Employee implements java.io.Serializable{
 	
 	public Employee(String empId, String email, String myProfile, String userId, String empName, String userPwd,
 			String empNo, String phone, String address, String deptId, String jobId, String paystep, String empPhone,
-			int salary, double bonus, String marriage, Date hireDate, String idLevel, String sign, String deptName, String jobName) {
+			int salary, double bonus, String marriage, Date hireDate, String idLevel, String deptName, String jobName, String originalSign, String reNameSign, String fax) {
 		super();
 		this.empId = empId;
 		this.email = email;
@@ -68,10 +70,11 @@ public class Employee implements java.io.Serializable{
 		this.marriage = marriage;
 		this.hireDate = hireDate;
 		this.idLevel = idLevel;
-		this.sign = sign;
 		this.deptName = deptName;
 		this.jobName = jobName;
-		
+		this.originalSign = originalSign;
+		this.reNameSign = reNameSign;
+		this.fax = fax;
 	}
 
 	public String getEmpId() {
@@ -218,18 +221,6 @@ public class Employee implements java.io.Serializable{
 		this.idLevel = idLevel;
 	}
 
-	public String getSign() {
-		return sign;
-	}
-
-	public void setSign(String sign) {
-		this.sign = sign;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public String getDeptName() {
 		return deptName;
 	}
@@ -246,14 +237,38 @@ public class Employee implements java.io.Serializable{
 		this.jobName = jobName;
 	}
 
+	public String getOriginalSign() {
+		return originalSign;
+	}
+
+	public void setOriginalSign(String originalSign) {
+		this.originalSign = originalSign;
+	}
+	
+	public String getReNameSign() {
+		return reNameSign;
+	}
+
+	public void setReNameSign(String reNameSign) {
+		this.reNameSign = reNameSign;
+	}
+	
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+	
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", email=" + email + ", myProfile=" + myProfile + ", userId=" + userId
 				+ ", empName=" + empName + ", userPwd=" + userPwd + ", empNo=" + empNo + ", phone=" + phone
 				+ ", address=" + address + ", deptId=" + deptId + ", jobId=" + jobId + ", paystep=" + paystep
 				+ ", empPhone=" + empPhone + ", salary=" + salary + ", bonus=" + bonus + ", marriage=" + marriage
-				+ ", hireDate=" + hireDate + ", idLevel=" + idLevel + ", sign=" + sign + ", deptName=" + deptName
-				+ ", jobName=" + jobName + "]";
+				+ ", hireDate=" + hireDate + ", idLevel=" + idLevel + ", deptName=" + deptName
+				+ ", jobName=" + jobName + ", originalSign=" + originalSign + ", reNameSign=" + reNameSign + ", fax=" + fax + "]";
 	}
 
 }

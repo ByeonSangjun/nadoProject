@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+#messageWindow {
+	background: #f3f1fa;
+	height: 500px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/* .chat_content { */
+/* 	background: #c7bee8; */
+/* 	padding: 10px; */
+/* 	border-radius: 10px; */
+/* 	display: inline-block; */
+/* 	position: relative; */
+/* 	margin: 10px; */
+/* 	float: right; */
+/* 	clear: both; */
+/* } */
+
+/* .chat_content:after { */
+/* 	content: ''; */
+/* 	positon: absolute; */
+/* 	right: 0; */
+/* 	top: 50%; */
+/* 	width: 0; */
+/* 	height: 0; */
+/* 	border: 20px solid transparent; */
+/* 	border-left-color: rgb(255, 255, 102); */
+/* 	border-right: 0; */
+/* 	border-top: 0; */
+/* 	margin-top: -3.5px; */
+/* 	margin-right: -10px; */
+/* } */
+
+/* .other-side { */
+/* 	background: white; */
+/* 	float: left; */
+/* 	clear: both; */
+/* } */
+
+/* .other-side:after { */
+/* 	content: ''; */
+/* 	positon: absolute; */
+/* 	right: 0; */
+/* 	top: 50%; */
+/* 	width: 0; */
+/* 	height: 0; */
+/* 	border: 20px solid transparent; */
+/* 	border-right-color: white; */
+/* 	border-left: 0; */
+/* 	border-top: 0; */
+/* 	margin-top: -3.5px; */
+/* 	margin-right: -10px; */
+/* } */
+
+/* 2019-10-25 작업시작*/
+
+/* CSS talk bubble */
+/*필요한것들*/
+.talk-bubble {
+	margin: 20px;
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: auto;
+	background-color: #c7bee8;
+	float:right;
+	clear: both;
+}
+
+.talk-bubble-left {
+	margin: 20px;
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: auto;
+	background-color: #fff;
+	float:left;
+	clear: both;
+}
+
+/* .border { */
+/* 	border: 8px solid #666; */
+/* } */
+
+.round {
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: auto;
+	right: -40px;
+	top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #666 transparent transparent #666;
+}
+
+.tri-right.right-in:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: auto;
+	right: -12px;
+	top: 12px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: #c7bee8 transparent transparent #c7bee8;
+}
+.tri-left.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 40px;
+	right: auto;
+	top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #fff transparent transparent #fff;
+}
+.tri-left.left-in:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: -12px;;
+	right: auto;
+	top: 12px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: #fff transparent transparent transparent;
+}
+
+/* talk bubble contents */
+.talktext {
+	padding: 1em;
+	text-align: left;
+	line-height: 1.5em;
+}
+
+.talktext p {
+	/* remove webkit p margins */
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
+

@@ -50,9 +50,10 @@ public class EmployeeDao {
 				emp.setMarriage(rset.getString("marriage"));
 				emp.setHireDate(rset.getDate("hire_date"));
 				emp.setIdLevel(rset.getString("id_level"));
-				emp.setSign(rset.getString("sign"));
 				emp.setDeptName(rset.getString("dept_name"));
 				emp.setJobName(rset.getString("job_name"));
+				emp.setOriginalSign(rset.getString("original_sign"));
+				emp.setReNameSign(rset.getString("rename_sign"));
 			}
 		
 		} catch (SQLException e) {
@@ -71,7 +72,7 @@ public class EmployeeDao {
 		int random = (int)(Math.random() * 10000)+1;
 		String empId = "a" + random;
 		
-		String query = "insert into employee values(?, ?, null, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, ?, sysdate, null, null)";
+		String query = "insert into employee values(?, ?, null, ?, ?, ?, ?, ?, ?, null, null, null, null, null, null, ?, sysdate, null, null, null)";
 		try {
 			
 			pstmt = conn.prepareStatement(query);
@@ -152,7 +153,6 @@ public class EmployeeDao {
 			close(pstmt);
 		}
 		
-		
 		return result;
 	}
 
@@ -171,18 +171,12 @@ public class EmployeeDao {
 			if(rset.next()) {
 				result += 1;			
 			}
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rset);
 			close(pstmt);
 		}
-		
-		
-		
-		
 		return result;
 	}
 	
@@ -199,58 +193,141 @@ public class EmployeeDao {
 	
 	
 	
-	// 우수
+	   // 우수
+	   
+    //조직도 회원 리스트 조회용
+    public ArrayList<Employee> selectList(Connection conn) {
+       ArrayList<Employee> list = new ArrayList<Employee>();
+       Statement stmt = null;
+       ResultSet rset = null;
 
-		public ArrayList<Employee> selectList(Connection conn) {
-			ArrayList<Employee> list = new ArrayList<Employee>();
-			Statement stmt = null;
-			ResultSet rset = null;
+       String query = "select * from employee";
 
-			String query = "select emp_id, email, my_profile, user_id, emp_name, user_pwd, emp_no, "
-					+ "phone, address, dept_name, job_name, paystep, emp_phone, salary, bonus, marriage, "
-					+ "hire_date, id_level,sign from employee "
-					+ "LEFT JOIN dept USING (dept_ID) left join job using (job_id)";
+       try {
+          stmt = conn.createStatement();
 
-			try {
-				stmt = conn.createStatement();
+          rset = stmt.executeQuery(query);
 
-				rset = stmt.executeQuery(query);
+          while (rset.next()) {
+             Employee employee = new Employee();
 
-				while (rset.next()) {
-					Employee employee = new Employee();
+             employee.setEmpId(rset.getString("emp_id"));
+             employee.setEmail(rset.getString("email"));
+             employee.setMyProfile(rset.getString("my_profile"));
+             employee.setUserId(rset.getString("user_id"));
+             employee.setEmpName(rset.getString("emp_name"));
+             employee.setUserPwd(rset.getString("user_pwd"));
+             employee.setEmpNo(rset.getString("emp_no"));
+             employee.setPhone(rset.getString("phone"));
+             employee.setAddress(rset.getString("address"));
+             employee.setDeptId(rset.getString("DEPT_ID"));
+             employee.setJobId(rset.getString("JOB_ID"));
+             employee.setPaystep(rset.getString("paystep"));
+             employee.setEmpPhone(rset.getString("emp_phone"));
+             employee.setSalary(rset.getInt("salary"));
+             employee.setBonus(rset.getDouble("bonus"));
+             employee.setMarriage(rset.getString("marriage"));
+             employee.setHireDate(rset.getDate("hire_date"));
+             employee.setIdLevel(rset.getString("id_level"));
+             employee.setOriginalSign(rset.getString("ORIGINAL_SIGN"));
+             employee.setReNameSign(rset.getString("RENAME_SIGN"));
 
-					employee.setEmpId(rset.getString("emp_id"));
-					employee.setEmail(rset.getString("email"));
-					employee.setMyProfile(rset.getString("my_profile"));
-					employee.setUserId(rset.getString("user_id"));
-					employee.setEmpName(rset.getString("emp_name"));
-					employee.setUserPwd(rset.getString("user_pwd"));
-					employee.setEmpNo(rset.getString("emp_no"));
-					employee.setPhone(rset.getString("phone"));
-					employee.setAddress(rset.getString("address"));
-					employee.setDeptId(rset.getString("dept_name"));
-					employee.setJobId(rset.getString("job_name"));
-					employee.setPaystep(rset.getString("paystep"));
-					employee.setEmpPhone(rset.getString("emp_phone"));
-					employee.setSalary(rset.getInt("salary"));
-					employee.setBonus(rset.getDouble("bonus"));
-					employee.setMarriage(rset.getString("marriage"));
-					employee.setHireDate(rset.getDate("hire_date"));
-					employee.setIdLevel(rset.getString("id_level"));
-					employee.setSign(rset.getString("sign"));
+             list.add(employee);
+          }
+       } catch (SQLException e) {
+          e.printStackTrace();
+       } finally {
+          close(rset);
+          close(stmt);
+       }
+       return list;
+    }
+    
+    
+    //조직도 부서 리스트 조회용
+    public ArrayList<Dept> dselectList(Connection conn) {
+       ArrayList<Dept> dlist = new ArrayList<Dept>();
+       Statement stmt = null;
+       ResultSet rset = null;
+       
+       String query = "select * from dept order by dept_id asc";
+       
+       try {
+          stmt = conn.createStatement();
+          
+          rset = stmt.executeQuery(query);
 
-					list.add(employee);
+          while (rset.next()) {
+             
+             Dept dept = new Dept();
+             
+             dept.setDeptId(rset.getString("DEPT_ID"));
+             dept.setDeptName(rset.getString("DEPT_NAME"));
+             dept.setFax(rset.getString("FAX"));
+             
+             dlist.add(dept);
+          }
+       } catch (SQLException e) {
+          e.printStackTrace();
+       }finally {
+          close(rset);
+          close(stmt);
+       }
+       return dlist;
+    }
+    
+    
+    //조직도 리스트 상세보기 조회용
+    public Employee empListDetail(Connection conn, String empid) {
+       Employee employee = null;
+       PreparedStatement pstmt = null;
+       ResultSet rset = null;
 
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(stmt);
-			}
+       String query = "select emp_id, email, my_profile, user_id, emp_name, user_pwd, emp_no, phone, address, DEPT_ID, JOB_ID, "
+                         + "dept_name, job_name, paystep, emp_phone, salary, bonus, marriage, hire_date, id_level, ORIGINAL_SIGN, RENAME_SIGN, "
+                            + "fax from EMPLOYEE full join dept using (dept_ID) full join job using (job_id) where emp_id = ?";
 
-			return list;
-		}
+       try {
+          pstmt = conn.prepareStatement(query);
+          pstmt.setString(1, empid);
+
+          rset = pstmt.executeQuery();
+
+          if (rset.next()) {
+             employee = new Employee();
+
+             employee.setEmpId(rset.getString("emp_id"));
+             employee.setEmail(rset.getString("email"));
+             employee.setMyProfile(rset.getString("my_profile"));
+             employee.setUserId(rset.getString("user_id"));
+             employee.setEmpName(rset.getString("emp_name"));
+             employee.setUserPwd(rset.getString("user_pwd"));
+             employee.setEmpNo(rset.getString("emp_no"));
+             employee.setPhone(rset.getString("phone"));
+             employee.setAddress(rset.getString("address"));
+             employee.setDeptId(rset.getString("DEPT_ID"));
+             employee.setJobId(rset.getString("JOB_ID"));
+             employee.setDeptName(rset.getString("dept_name"));
+             employee.setJobName(rset.getString("job_name"));
+             employee.setPaystep(rset.getString("paystep"));
+             employee.setEmpPhone(rset.getString("emp_phone"));
+             employee.setSalary(rset.getInt("salary"));
+             employee.setBonus(rset.getDouble("bonus"));
+             employee.setMarriage(rset.getString("marriage"));
+             employee.setHireDate(rset.getDate("hire_date"));
+             employee.setIdLevel(rset.getString("id_level"));
+             employee.setOriginalSign(rset.getString("ORIGINAL_SIGN"));
+             employee.setReNameSign(rset.getString("RENAME_SIGN"));
+             employee.setFax(rset.getString("fax"));
+          }
+       } catch (SQLException e) {
+          e.printStackTrace();
+       } finally {
+          close(rset);
+          close(pstmt);
+       }
+       return employee;
+    }
 
 		
 		
@@ -288,7 +365,8 @@ public class EmployeeDao {
 					employee.setMarriage(rset.getString("marriage"));
 					employee.setHireDate(rset.getDate("hiredate"));
 					employee.setIdLevel(rset.getString("idlevel"));
-					employee.setSign(rset.getString("sign"));
+					employee.setOriginalSign(rset.getString("original_sign"));
+					employee.setReNameSign(rset.getString("rename_sign"));
 
 				}
 			} catch (SQLException e) {
@@ -301,49 +379,231 @@ public class EmployeeDao {
 			return employee;
 		}
 
-		
-		
-		public ArrayList<Dept> selectgwList(Connection conn) {
-			ArrayList<Dept> dlist = new ArrayList<Dept>();
-			Statement stmt = null;
+		public Employee employeeInfo(Connection conn, String empId) {
+			PreparedStatement pstmt = null;
 			ResultSet rset = null;
+			Employee emp = null;
+			String query = "select * from employee where emp_id = ?";
 			
-			String query = "select emp_name, dept_id, DEPT_NAME, DEPT_ORIGINID, DEPT_LEVEL, FAX " + 
-					"from dept " + 
-					"left join employee using (dept_id)";
-
 			try {
-				stmt = conn.createStatement();
-
-				rset = stmt.executeQuery(query);
-
-				while (rset.next()) {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, empId);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()){
+					 emp = new Employee(rset.getString("email"), rset.getString("user_id"),
+							rset.getString("emp_name"), rset.getString("user_pwd"), rset.getString("emp_no"),
+							rset.getString("phone"), rset.getString("address"), rset.getString("marriage"));
 					
-					Dept dept = new Dept();
-					
-					dept.setDeptId(rset.getString("dept_id"));
-					dept.setDeptName(rset.getString("dept_name"));
-					dept.setDeptOriginId(rset.getString("dept_originid"));
-					dept.setDeptLevel(rset.getInt("dept_level"));
-					dept.setFax(rset.getString("fax"));
-					
-
-					dlist.add(dept);
-
+					 emp.setHireDate(rset.getDate("hire_date"));
+					 emp.setEmpId(rset.getString("emp_id"));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			} finally {
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return emp;
+		}
+
+		public ArrayList<Employee> searchDeptId(Connection conn) {
+			ArrayList<Employee> list = new ArrayList<Employee>();
+			Statement stmt = null;
+			ResultSet rset = null;
+			String query="select * from dept";
+			try {
+				stmt = conn.createStatement();
+				rset = stmt.executeQuery(query);
+				while(rset.next()) {
+					Employee emp = new Employee();
+					emp.setDeptId(rset.getString("dept_id"));
+					emp.setDeptName(rset.getString("dept_name"));
+					
+					list.add(emp);
+				}	
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
 				close(rset);
 				close(stmt);
 			}
-
-			return dlist;
-
+			
+			return list;
 		}
-	
-	
-	
-	
 
+		public ArrayList<Employee> searchJobId(Connection conn) {
+			ArrayList<Employee> list = new ArrayList<Employee>();
+			Statement stmt = null;
+			ResultSet rset = null;
+			String query="select * from job";
+			try {
+				stmt = conn.createStatement();
+				rset = stmt.executeQuery(query);
+				while(rset.next()) {
+					Employee emp = new Employee();
+					emp.setJobId(rset.getString("job_id"));
+					emp.setJobName(rset.getString("job_name"));
+					
+					list.add(emp);
+				}	
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(stmt);
+			}
+			
+			return list;
+		}
+
+		public ArrayList<Employee> searchPaystep(Connection conn) {
+			ArrayList<Employee> list = new ArrayList<Employee>();
+			Statement stmt = null;
+			ResultSet rset = null;
+			String query="select * from paystep";
+			try {
+				stmt = conn.createStatement();
+				rset = stmt.executeQuery(query);
+				while(rset.next()) {
+					Employee emp = new Employee();
+					emp.setPaystep(rset.getString("paystep"));
+					
+					list.add(emp);
+				}	
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(stmt);
+			}
+			
+			return list;
+		}
+
+		public int emailCheck(Connection conn, String email) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String query = "select email from employee where email= ?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, email);		
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					result += 1;			
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return result;
+		}
+		
+		public int phoneCheck(Connection conn, String phone) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String query = "select phone from employee where phone= ?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, phone);		
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					result += 1;			
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return result;
+		}
+		
+		//승인처리 할때 필요함
+		public String searchEmpId(Connection conn, String userId) {
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String empId = "";
+			String query ="select emp_id from employee where user_id = ?";
+			
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, userId);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					empId = rset.getString("emp_id");
+				}			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rset);
+				close(pstmt);
+			}
+			return empId;
+		}
+
+		public int updateState(Connection conn, String empId) {
+			PreparedStatement pstmt = null;
+			int result = 0;
+			String query ="insert into state values(?, ?, null, sysdate)";
+			try {
+				pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, empId);
+				pstmt.setString(2, "재직");	
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();				               
+			}finally {			
+				close(pstmt);
+			}
+			return result;
+		}
+
+		
+	// 이메일에서 주소록 select 해오기 형규
+	public ArrayList<Employee> selectAddress(Connection conn) {
+		ArrayList<Employee> list = new ArrayList<Employee>();
+		Statement stmt = null;
+		ResultSet rset = null;
+
+		String query = "select email, emp_name from employee";
+
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+
+			while (rset.next()) {
+				Employee emp = new Employee();
+
+				emp.setEmail(rset.getString("email"));
+				emp.setEmpName(rset.getString("emp_name"));
+
+				list.add(emp);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(stmt);
+		}
+
+		return list;
+	}
 }

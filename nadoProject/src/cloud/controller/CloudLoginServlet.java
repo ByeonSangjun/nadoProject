@@ -52,8 +52,6 @@ public class CloudLoginServlet extends HttpServlet {
 		String id = prop.getProperty("nadoid");
 		String password = prop.getProperty("nadopassword");
 
-		// nadodriver 키 값으로 조회했을때 값이 있으면 나머지도 실행
-
 		// jdbc에 정보 저장
 		Company comp = new Company(driver, url, id, password);
 		HttpSession session = request.getSession();

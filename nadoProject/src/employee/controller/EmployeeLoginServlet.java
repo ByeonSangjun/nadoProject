@@ -41,7 +41,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		// 사원한명 정보 꺼내오기
 		Employee loginEmp = new EmployeeService().loginEmployee(session.getAttribute("comp"), userId);
-
+		
 		// 사원정보 꺼냈으면 보여줄 뷰 선택
 		PrintWriter pw = null;
 		RequestDispatcher view = null;

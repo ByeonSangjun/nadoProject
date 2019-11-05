@@ -42,16 +42,24 @@ public class EmployeeEnrollServlet extends HttpServlet {
 		String fullEmpNo = request.getParameter("emp_no");
 		String empNo = fullEmpNo.substring(0, 6) +"-" +fullEmpNo.substring(6);
 		String marriage = request.getParameter("marriage");
+		String postcode = request.getParameter("postcode");
+		String address = request.getParameter("address");
+		String detailAddress = request.getParameter("detailAddress");
 		String extraAddress = request.getParameter("sample6_extraAddress");
-		String address = null;
-		if(extraAddress != null) {
-			address = "우편번호(" +request.getParameter("postcode") +") "+ request.getParameter("address")+request.getParameter("sample6_extraAddress")+" " + request.getParameter("detailAddress");	
+		String fullAddress = null;
+	
+		if(extraAddress != "" && detailAddress != "") {
+			fullAddress = postcode +"%"+ address +"%"+ extraAddress+"%"+ detailAddress;
+		}else if(extraAddress == "" && detailAddress != "") {
+			fullAddress = postcode +"%"+ address +"%"+ detailAddress;
+		}else if(extraAddress != "" && detailAddress == "") {
+			fullAddress = postcode +"%"+ address +"%"+ extraAddress;
 		}else {
-			address = "우편번호(" +request.getParameter("postcode") +") "+ request.getParameter("address")+" " + request.getParameter("detailAddress");
+			fullAddress = postcode +"%"+ address;
 		}
 		
 		//꺼낸값 객체에 담기
-		Employee emp = new Employee(email, userId, empName, userPwd, empNo, phone, address, marriage);
+		Employee emp = new Employee(email, userId, empName, userPwd, empNo, phone, fullAddress, marriage);
 		HttpSession session = request.getSession();
 		int result = new EmployeeService().enrollEmployee(session.getAttribute("comp"), emp);
 		PrintWriter pw = response.getWriter();
