@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import employee.model.service.EmployeeService;
+import employee.model.vo.Dept;
 import employee.model.vo.Employee;
 
 /**
@@ -33,22 +34,26 @@ public class EmpListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 일반사원용 전체 조회 처리용 컨트롤러
+		// 회원 전체 조회 처리용 컨트롤러
 		
-		HttpSession session = request.getSession();
-		
-		ArrayList<Employee> list = new EmployeeService().selectList(session.getAttribute("comp"));
-		
-		RequestDispatcher view = null;
-		if(list.size() > 0) {
-			view = request.getRequestDispatcher("views/groupware/employee/empList.jsp");
-			request.setAttribute("list", list);
-			view.forward(request, response);
-		}else {
-			view = request.getRequestDispatcher("views/groupware/common/error.jsp");
-			request.setAttribute("message", "회원 전체 조회 실패!");
-			view.forward(request, response);
-		}
+				HttpSession session = request.getSession();
+				
+				//조직도 부서 리스트용
+				ArrayList<Dept> dlist = new EmployeeService().dselectList(session.getAttribute("comp"));
+				//조직도 사원 리스트용
+				ArrayList<Employee> list = new EmployeeService().selectList(session.getAttribute("comp"));
+						
+				RequestDispatcher view = null;
+					if(list.size() > 0) {
+						view = request.getRequestDispatcher("views/groupware/employee/empListView.jsp");
+						request.setAttribute("list", list);
+						request.setAttribute("dlist", dlist);
+						view.forward(request, response);
+					}else {
+						view = request.getRequestDispatcher("views/common/error.jsp");
+						request.setAttribute("message", "회원 전체 조회 실패!");
+						view.forward(request, response);
+					}
 	}
 
 	/**
